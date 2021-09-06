@@ -25,7 +25,7 @@ function addTrack {
 
 
 	output=""
-	echo "Add all console/basic/whatever files here"
+	echo "Add all console/basic/whatever files here (ctr+c to exit now if needed)"
 	while read line
 	do
 		# break if line is empty
@@ -38,12 +38,9 @@ function addTrack {
 }
 
 function updateconsole {
-	echo "a"
 	files=$(cat $dir/trackingcli.cfg | sed -e '$ s/.$//')
-	echo $files 
 	cd $HOME
 	eval "cp -r --parents ./{$files} $dir/console"
-	cd $dir
 }
 
 function updategraphical {
@@ -74,15 +71,19 @@ CHOICE=$(
 	case $CHOICE in
 		"A.")
 			echo "full config"
-			whiptail  --title "aa" --msgbox "lol" 8 88
+			installgraphical
+			installconsole
 			menu
 		;;
 		"B.")
 			echo "partial config"
+			installconsole
 			menu
 		;;
 		"C.")
 			echo "update config"
+			updateconsole
+			updateconsole
 			menu
 		;;
 		"D.")
@@ -98,5 +99,4 @@ CHOICE=$(
 	esac
 	exit
 }
-updateconsole
-#menu
+menu
