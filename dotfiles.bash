@@ -83,7 +83,7 @@ CHOICE=$(
 		"C.")
 			echo "update config"
 			updateconsole
-			updateconsole
+			updategraphical
 			menu
 		;;
 		"D.")

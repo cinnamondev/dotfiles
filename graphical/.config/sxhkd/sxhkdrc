@@ -129,14 +129,20 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 Print 
-	scrot
+	scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
 super + Print
-	scrot -s
+	scrot '/tmp/%F_%T_$wx$h.png' -s -e 'xclip -selection clipboard -target image/png -i $f'
 
 # Quick launch stratchpad
-XF86LaunchA; super + d
-	bash ~/.scripts/scratchpad.sh discord discord
+super + {semicolon,apostrophe,numbersign}
+	bash ~/.scripts/scratchpad.sh {discord discord, Spotify spotify, terminator terminator}
 
-XF86LaunchA; super + s
-	bash ~/.scripts/scratchpad.sh Spotify spotify
+{XF86AudioPlay, XF86AudioPause}
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
