@@ -50,11 +50,11 @@ function updategraphical {
 }
 
 function installconsole {
-	cp -r $dir/console/* $HOME --exclude .gitkeep
+	cp -r $dir/console/. $HOME
 }
 
 function installgraphical {
-	cp -r $dir/graphical/* $HOME --exclude .gitkeep
+	cp -r $dir/graphical/. $HOME
 }
 
 

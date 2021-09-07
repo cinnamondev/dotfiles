@@ -33,7 +33,12 @@ if [ -z "${id}" ]; then
 else
     while read -r instance; do
         bspc node "${instance}" --flag hidden --to-monitor focused --focus
-	echo "a"
+	bspc node "${instance}" --state floating
+	xdotool windowsize "${instance}" 1280 720
+	xdotool windowmove "${instance}" 100 100
+
+	echo "${instance}"
+
     done <<<"${id}"
 fi
 
