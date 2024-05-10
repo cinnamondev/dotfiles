@@ -14,14 +14,19 @@ bspc config gapless_monocle      true
 bspc rule -a vlc state=floating follow=on
 bspc rule -a firefox:Toolkit state=floating follow=on
 
-wmname LG3D & # Java fix
+# Java fixes
+wmname LG3D &
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-feh --bg-fill ~/Pictures/background.jpg
+feh --bg-fill ~/.config/backgrounds/cas.jpg
 
+# Polybar launch
 bash ~/.config/polybar/launch.sh --colorblocks
-xinput set-prop "PIXA3854:00 093A:0274 Touchpad" 332 1
+
+# Framework specific option
+xinput set-prop "PIXA3854:00 093A:0274 Touchpad" 332 1 & 
+# Start Policy Kit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & 
 # Startup applications
 lock=/tmp/bspwm-apps.lock
