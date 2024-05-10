@@ -110,3 +110,4 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Created by `pipx` on 2024-02-10 02:51:13
 export PATH="$PATH:/home/nutmeg/.local/bin"
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
