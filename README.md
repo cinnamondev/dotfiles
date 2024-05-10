@@ -25,13 +25,15 @@ Repository setup ([borrowed!](https://github.com/Siilwyn/my-dotfiles))
 ```
 git init --bare $HOME/.dotfiles
 alias mydotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+dotfiles branch -m fw
 mydotfiles remote add origin git@github.com:cinnamondev/dotfiles.git
 ```
 
 Replicating
 
 ```
-git clone --separate-git-dir=$HOME/.dotfiles git@github.com/cinnamondev/dotfiles.git .dotfiles-tmp
+git clone --separate-git-dir=$HOME/.dotfiles -b fw git@github.com:/cinnamondev/dotfiles.git .dotfiles-tmp
+dotfiles
 rsync --recursive --verbose --exclude '.git*' --exclude 'README.md' .dotfiles-tmp/ $HOME/
 rm --recursive .dotfiles-tmp
 ```
