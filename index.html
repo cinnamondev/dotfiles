@@ -7,7 +7,7 @@
     <!-- cheaty - we want assets from main site :) -->
     <link rel="stylesheet" href="https://cinnamondev.github.io/assets/css/pre.css">
     <link rel="stylesheet" href="https://cinnamondev.github.io/assets/css/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&family=Fira+Code:wght@500" />
     <meta property="og:title" content="Cinnamondev - dotfiles" />
     <meta property="og:description" content="Personal dotfiles!"/>
     <meta property="profile:username" content="cinnamon">
@@ -20,7 +20,7 @@
         <aside><i>Personal Dotfiles</i></aside>
     </div>
     <div style="flex:1;justify-content: center;">
-        <code id="bashScript">
+        <code id="bashScript" style="font-family:&quot;Fira Code&quot;, monospace;font-optical-sizing: auto;font-weight: 500;font-style: normal;">
             curl https://cinnamondev.github.io/dotfiles/deploy.sh | bash -s fw
         </code>
         <button title="Copy to clipboard" onclick="navigator.clipboard.writeText(&quot;curl https://cinnamondev.github.io/dotfiles/deploy.sh | bash -s fw&quot;);" style="float:right;color:var(--on-background);background-color: transparent; background-repeat: no-repeat;border: none;cursor: pointer;overflow: hidden;outline: none;font-size:1.5em;vertical-align: middle;">
