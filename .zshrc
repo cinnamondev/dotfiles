@@ -102,9 +102,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 #	exec startx &>/dev/null
-	exec startw &>/dev/null
+	exec Hyprland
 fi
 export AWT_TOOLKIT=MToolkit
 export _JAVA_AWT_WM_NONREPARENTING=1
