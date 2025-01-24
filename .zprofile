@@ -6,3 +6,6 @@ export PATH="$PATH:/home/nutmeg/.local/bin"
 # Added by Toolbox App
 export PATH="$PATH:/home/nutmeg/.local/share/JetBrains/Toolbox/scripts"
 
+
+export URMUM="djksjsk"
+

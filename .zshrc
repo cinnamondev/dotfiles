@@ -113,4 +113,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Created by `pipx` on 2024-02-10 02:51:13
 export PATH="$PATH:/home/nutmeg/.local/bin"
+
+#ruby ruby ruby
+export PATH="$PATH:/home/nutmeg/.local/share/gem/ruby/3.0.0/bin"
+
+#export BUNDLE_PATH="/home/nutmeg/.local/share/rubybundles"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
+
+export TERM=xterm-256color
