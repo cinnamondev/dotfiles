@@ -4,5 +4,5 @@ export PATH="$PATH:/home/nutmeg/.local/bin"
 
 
 # Added by Toolbox App
-export PATH="$PATH:/home/nutmeg/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/home/ada/.local/share/JetBrains/Toolbox/scripts"
 
