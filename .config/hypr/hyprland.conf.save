@@ -1,5 +1,5 @@
 # This is an example Hyprland config file.
-## Refer to the wiki for more information.
+# Refer to the wiki for more information.
 # https://wiki.hyprland.org/Configuring/Configuring-Hyprland/
 
 # Please note not all available settings / options are set here.
@@ -31,7 +31,7 @@ $menu = wofi --show drun
 $clipboard = wl-clip-perist --clipboard regular
 
 #################
-## AUTOSTART ###
+### AUTOSTART ###
 #################
 
 # Autostart necessary processes (like notifications daemons, status bars, etc.)
@@ -40,10 +40,9 @@ $clipboard = wl-clip-perist --clipboard regular
 # exec-once = $terminal
 # exec-once = nm-applet &
 # exec-once = waybar & hyprpaper & firefox
-#exec-once= /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec-once = systemctl --user start hyprpolkitagent
+exec-once= /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec-once = discord & spotify-launcher & blueman-manager 
-exec-once = hyprpaper & hypridle & hyprsunset
+exec-once = hyprpaper & hypridle
 exec-once = systemd-run --user --on-boot=10 --on-unit-active=60 /home/nutmeg/.config/scripts/battery-sadMac.sh &i
 exec-once = $clipboard
 exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -112,8 +111,8 @@ decoration {
 
 # https://wiki.hyprland.org/Configuring/Variables/#animations
 animations {
-    #enabled = true
-    enabled = false
+    enabled = true
+
     # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
     bezier = myBezier, 0.1, 1, 0.1, 1
@@ -179,8 +178,8 @@ device {
 
 # https://wiki.hyprland.org/Configuring/Variables/#gestures
 gestures {
-    #workspace_swipe = true
-    #workspace_swipe_fingers = 4
+    workspace_swipe = true
+    workspace_swipe_fingers = 4
     workspace_swipe_cancel_ratio = 0.4
 }
 
@@ -197,9 +196,7 @@ device {
 ####################
 
 # See https://wiki.hyprland.org/Configuring/Keywords/
-$mainMod = Super # Sets "Windows" key as main modifier
-#$mainMod = Shift_R
-#$mainMod = ISO_Level3_Shift
+#$mainMod = ISO_Level3_Shift # Sets "Windows" key as main modifier
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Return, exec, $terminal
@@ -309,7 +306,7 @@ bind = $mainMod SHIFT,p, togglespecialworkspace, bluetooth
 bind = $mainMod ALT,l,exec,hyprlock
 
 $commandBatteryGet = bash ~/.config/scripts/batteryCheck.sh
-bind = $mainMod ALT,b,exec, $commandBatteryGet
+bindl = $mainMod ALT,b,exec, $commandBatteryGet
 
 $commandTimeGet = bash ~/.config/scripts/timeGet.sh
 bind = $mainMod ALT,t,exec, $commandTimeGet
@@ -330,16 +327,11 @@ bind = SUPER SHIFT, S, exec, systemctl suspend
 # Example windowrule v2
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 
-windowrule = match:class .*, suppress_event maximize # You'll probably like this
+windowrule = suppressevent maximize, class:.* # You'll probably like this.
+windowrule = workspace special:discord silent, class:(discord)
+windowrule = workspace special:spotify silent, class:(Spotify)
+windowrule = workspace special:ff, class:(fireFoxScratch)
+windowrule = workspace special:bluetooth silent, class:(blueman-manager)
 
-windowrule = match:class discord, workspace special:discord silent
-windowrule = match:class [sS]potify, workspace special:spotify silent
-
-windowrule {
-  name = blueman
-  match:class = blueman-manager
-  float = on
-  size = 1000 1000
-  workspace = special:bluetooth silent
-}
-
+windowrule = float, class:(blueman-manager)
+windowrule = size 1000 1000,class:(blueman-manager)
