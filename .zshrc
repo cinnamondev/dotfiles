@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 #	exec startx &>/dev/null
-	exec startw &>/dev/null
+	exec start-hyprland &>/dev/null
 fi
 export AWT_TOOLKIT=MToolkit
 export _JAVA_AWT_WM_NONREPARENTING=1
