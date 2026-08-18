@@ -1,4 +1,9 @@
 # dotfiles
+
+```
+curl https://cinnamondev.github.io/dotfiles/deploy.sh | bash -s zen
+```
+
 Dependencies:
 
 - hyprland
