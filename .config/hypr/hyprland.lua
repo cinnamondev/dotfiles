@@ -39,13 +39,23 @@ env = hl.env("__GLX_VENDOR_LIBRARY_NAME","nvidia")
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
-
+require("config")
 require("includes/discord")
 require("includes/spotify")
 require("includes/media-controller")
 require("includes/programs")
 require("includes/pictureinpicture")
 require("includes/util")
+require("includes/time")
+
+if IS_LAPTOP then
+    require("includes/battery")
+    require("includes/brightness")
+    
+    if IS_FRAMEWORK then
+        require("includes/framework-fan")
+    end
+end
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -175,6 +185,7 @@ hl.config({
     misc = {
         force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+	background_color = 0x161d25
     },
 })
 

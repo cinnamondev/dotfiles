@@ -13,7 +13,12 @@ hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
 -- Autostart
 
 hl.on("hyprland.start", function () 
-  hl.dsp.exec_cmd(terminal)
-  hl.dsp.exec_cmd("hyprpaper")
-  hl.dsp.exec_cmd("hypridle")
+  hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+  hl.exec_cmd("hypridle")
+
+  if IS_ULTRAWIDE then
+    hl.exec_cmd("hyprpaper --config ~/.config/hypr/hyprpaper-ultrawide.conf")
+  else
+    hl.exec_cmd("hyprpaper")
+  end
 end)

@@ -1,0 +1,1 @@
+hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd("notify-send \"$(date)\""))

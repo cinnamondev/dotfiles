@@ -1,0 +1,1 @@
+hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("notify-send \"$(acpi -b)\""))
