@@ -76,9 +76,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+
 # User configuration
 
-source ~/Documents/Projects/zephyrWorkspace/zephyr/zephyr-env.sh
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -107,11 +108,11 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 #	exec startx &>/dev/null
-	exec Hyprland
+	exec start-hyprland &>/dev/null
 fi
 export AWT_TOOLKIT=MToolkit
 export _JAVA_AWT_WM_NONREPARENTING=1
-
+source /usr/share/nvm/init-nvm.sh
 # Created by `pipx` on 2024-02-10 02:51:13
 export PATH="$PATH:/home/nutmeg/.local/bin"
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
