@@ -1,38 +1,40 @@
 # dotfiles
+Dependencies:
 
-Personal Dotfiles.
-
-Requires all dependencies of :
-
-https://github.com/adi1090x/polybar-themes
-
-Additional dependencies :
-
-- fw-ectool (for branch fw)
-- bspwm, sxhkd
-- pulseaudio, playerctl
-- light
+- hyprland
+- hyprpaper
+- hypridle
+- hyprlock
+- nemo
 - kitty
-- picom
-- betterlockscreen
-- mpv
+- wofi
+- polkit gnome auth agent (polkit)
 - dunst
-- policykit + graphic policykit (for fw branch fan control shortcuts)
-- xdo,xdotool (scratchpad) (firefox)
+- grim
+- slurp
+- wl-copy
+- 
+additional:
+- light (brightness ctrl)
+- acpi (battery)
+- ectool (framework fan)
+- pavucontrol
+- blueman-manager
+
 
 Repository setup ([borrowed!](https://github.com/Siilwyn/my-dotfiles))
 
 ```
 git init --bare $HOME/.dotfiles
 alias mydotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-dotfiles branch -m fw
+dotfiles branch -m zen
 mydotfiles remote add origin git@github.com:cinnamondev/dotfiles.git
 ```
 
 Replicating
 
 ```
-git clone --separate-git-dir=$HOME/.dotfiles -b fw git@github.com:/cinnamondev/dotfiles.git .dotfiles-tmp
+git clone --separate-git-dir=$HOME/.dotfiles -b zen git@github.com:/cinnamondev/dotfiles.git .dotfiles-tmp
 dotfiles
 rsync --recursive --verbose --exclude '.git*' --exclude 'README.md' .dotfiles-tmp/ $HOME/
 rm --recursive .dotfiles-tmp
