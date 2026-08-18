@@ -128,7 +128,7 @@ animations {
 
 # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
 dwindle {
-    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    #pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = true # You probably want this
 }
 
@@ -167,7 +167,7 @@ input {
 
 # https://wiki.hyprland.org/Configuring/Variables/#gestures
 gestures {
-    workspace_swipe = false
+    #workspace_swipe = false
 }
 
 # Example per-device config
@@ -193,7 +193,8 @@ bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, V, togglefloating,
 bind = $mainMod, space, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
-bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod, J, layoutmsg, togglesplit, # dwindlei
+bind = $mainMod SHIFT, J, layoutmsg, swapsplit
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l
@@ -235,8 +236,8 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 # Example special workspace (scratchpad)
-#bind = ,, togglespecialworkspace, magic #TBD
-#bind = $mainMod SHIFT, XF86AudioMedia, movetoworkspace, special:magic
+bind = $mainMod, comma, togglespecialworkspace, magic #TBD
+bind = $mainMod SHIFT, comma, movetoworkspace, special:magic
 
 # Discord workspace
 bind = $mainMod, semicolon, togglespecialworkspace, discord
@@ -270,10 +271,11 @@ bindel = $mainMod,XF86AudioRaiseVolume,exec,$mediaNext
 bindel = $mainMod,XF86AudioLowerVolume,exec,$mediaPrev
 
 bind = , Print, exec, grim -g "$(slurp -d)" - | wl-copy 
+bind = $mainMod, Print, exec, grim - | wl-copy
 # keyboard specific
 bind = ,XF86Calculator, togglespecialworkspace, bluetooth
 
-bind = $mainMod ALT,l,exec,hyprlock
+bind = $manMod ALT,l,exec,hyprlock
 $commandTimeGet = bash ~/.config/scripts/timeGet.sh
 bind = $mainMod ALT,t,exec, $commandTimeGet
 
@@ -287,30 +289,44 @@ bind = SUPER SHIFT, S, exec, systemctl suspend
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
-windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
 
-windowrulev2 = workspace special:spotify silent, class:(Spotify)
-windowrulev2 = float, class:(Spotify)
-windowrule = size 1920 1080, class:(Spotify)
-windowrule = center, class:(Spotify)
-windowrule = stayfocused, class:(Spotify)
-#windowrule = forceinput,class:(Spotify)
+windowrule {
+  name = suppress maximize
+  match:class = .*
+  suppress_event = maximize
+}
 
-windowrulev2 = workspace special:discord silent, class:(discord)
-windowrulev2 = float, class:(discord)
-windowrule = size 1920 1080,class:(discord)
-windowrule = center,class:(discord)
-#windowrule = stayfocused,discord
-#windowrule = forceinput,discord
+windowrule {
+  name = spotify workspace
+  match:class = [sS]potify
+  float = on
+  size = 1920 1080
+  center = on
+  #stay_focused = on
+  workspace = special:spotify silent
+}
 
-windowrulev2 = workspace special:bluetooth silent, class:(blueman-manager)
-windowrulev2 = float, class:(blueman-manager)
-windowrule = size 1000 1000, class:(blueman-manager)
-windowrule = move 10% 10%, class:(blueman-manager)
+windowrule {
+  name = discord workspace
+  match:class = discord
+  float = on
+  size = 1920 1080
+  center = on
+  workspace = special:discord silent
+}
 
-windowrulev2 = workspace special:bluetooth silent, class:(org.pulseaudio.pavucontrol)
-windowrulev2 = float, class:(org.pulseaudio.pavucontrol)
-windowrule = size 1000 1000, class:(org.pulseaudio.pavucontrol)
-windowrule = move 2000 10%, class:(org.pulseaudio.pavucontrol)
+windowrule {
+  name = audio workspace
+  match:class = blueman-manager|org\.pulseaudio\.pavucontrol
+  #float = on
+  size = 1000 1000
+  pseudo = on
+  workspace = special:bluetooth silent
+}
 
-windowrule = tile, class:(Minecraft)(.*)
+windowrule {
+  name = foo bar
+  match:class = Tswcontrollerapp_linux_amd64_binary
+  float = on
+}
+

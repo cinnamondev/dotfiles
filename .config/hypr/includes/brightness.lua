@@ -1,0 +1,2 @@
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("light -A 1"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("light -U 1"), { locked = true, repeating = true })   
